@@ -621,14 +621,14 @@
   dependencies:
     "@chakra-ui/utils" "1.9.1"
 
-"@craftdocs/craft-extension-api-sdk@0.0.2":
+"@craftdocs/craft-extension-api-sdk@^0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@craftdocs/craft-extension-api-sdk/-/craft-extension-api-sdk-0.0.2.tgz#264654039f47ad3e16ddbe82e3c5ecfe4c9dde9b"
   integrity sha512-bgRa7G0oD3wQVeO7pJSMhAaIWi83s8fq3uT1irOwAdKZb6rYYhgk0+0rt/XLtvPb9zvTLEsQgI5MLXhlzOZesQ==
   dependencies:
     webpack-inject-plugin "^1.5.5"
 
-"@craftdocs/craft-extension-api@0.0.3":
+"@craftdocs/craft-extension-api@^0.0.3":
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@craftdocs/craft-extension-api/-/craft-extension-api-0.0.3.tgz#b72349f924dc14185308ab66466420d864b4fcfd"
   integrity sha512-LUS+1TOjFFAw8hqmk9w0uP2dBpKx0ea8y7NI0y8kFPeLmcM5WlEELA68TZs3CGMWCMhl1MUq6WFDsoiwkzeURA==

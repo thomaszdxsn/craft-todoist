@@ -24,8 +24,9 @@ const TaskCard: React.FC<{ taskId: number }> = ({ taskId }) => {
   const onDuplicateToBlocks = () => {
     craft.dataApi.addBlocks([
       craft.blockFactory.textBlock({
+        listStyle: { type: "todo", state: "unchecked" },
         content: [
-          { text: task.content },
+          { text: task.content + "\n" },
           { text: "open in todoist", link: { type: "url", url: task.url } },
         ],
       }),

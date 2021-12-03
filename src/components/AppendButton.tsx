@@ -41,7 +41,10 @@ const AppendButton: React.FC = () => {
             )
             .map((block) => {
               const description = `craftdocs://open?spaceId=${block.spaceId}&blockId=${block.id}`;
-              return add({ description, content: block.content.join("") });
+              return add({
+                description,
+                content: block.content.map((c) => c.text).join(""),
+              });
             })
         ).then((_) =>
           toast({ position: "bottom", title: "Create Successfully!" })

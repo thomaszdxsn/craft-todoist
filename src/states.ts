@@ -1,15 +1,13 @@
 import * as Recoil from "recoil";
 import { TodoistApi, Project, Task } from "@doist/todoist-api-typescript";
 
-const API_TOKEN_KEY = "API_TOKEN";
+export const API_TOKEN_KEY = "API_TOKEN";
 
 const globalScopeClient: { current?: TodoistApi } = { current: undefined };
 
 export const apiToken = Recoil.atom({
   key: "apiToken",
-  default: craft.storageApi
-    .get(API_TOKEN_KEY)
-    .then((resp) => resp.data ?? "ac2e347353de1027e28754dcdd723f8d8b7c813d"),
+  default: "",
 });
 
 export const client = Recoil.atom<TodoistApi | undefined>({
@@ -91,10 +89,12 @@ export const useLoginCallback = () =>
   Recoil.useRecoilCallback(({ set }) => {
     return async (token: string) => {
       let cli = new TodoistApi(token);
-      return cli.getProjects().then((pjs) => {
+      return cli.getProjects().then(async (pjs) => {
         set(projects, pjs);
         set(apiToken, token);
         set(client, cli);
+        await craft.storageApi.put(API_TOKEN_KEY, token);
+        window.localStorage.setItem(API_TOKEN_KEY, token);
       });
     };
   });
