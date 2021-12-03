@@ -1,10 +1,10 @@
 {
-  "id": "do.craft.template.typescript-react",
-  "name": "Typescript/React extension template",
-  "fileName": "typescript-react-extension",
-  "author" : "Craft Docs",
-  "author-email" : "team@craft.do",
-  "description" : "Template for creating Craft Docs extensions with Typescript and React",
+  "id": "do.craft.todoist",
+  "name": "craft-todoist",
+  "fileName": "craft-todoist",
+  "author": "thomaszdxsn",
+  "author-email": "thomaszdxsn@icloud.com",
+  "description": "todoist for craft",
   "api": "0.1.0",
   "main": "index.html"
 }
