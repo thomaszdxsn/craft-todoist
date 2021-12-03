@@ -2,8 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as Recoil from "recoil";
 import * as States from "./states";
-import { LoginForm } from "./components";
-import { ProjectList } from "./components";
+import { AppendButton, LoginForm, TodayPane } from "./components";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Container, Stack } from "@chakra-ui/layout";
 import { extendTheme } from "@chakra-ui/react";
@@ -14,13 +13,12 @@ const Content: React.FC = () => {
     <React.Suspense
       fallback={
         <Stack>
-          <Skeleton width="100%" height="100px" />
-          <Skeleton width="100%" height="100px" />
-          <Skeleton width="100%" height="100px" />
+          <Skeleton width="100%" height="300px" />
         </Stack>
       }
     >
-      <ProjectList />
+      <AppendButton />
+      <TodayPane />
     </React.Suspense>
   );
 };
@@ -46,9 +44,9 @@ const Wrapper: React.FC = () => {
       <Container
         minW={260}
         maxW={300}
-        width="100%"
+        width="280"
         fontSize="md"
-        overflowY="auto"
+        overflowY="hidden"
       >
         <Recoil.RecoilRoot>
           <React.Suspense fallback={<Skeleton h="60vh" />}>

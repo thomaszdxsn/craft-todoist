@@ -3,11 +3,27 @@ import { AccordionItem } from "@chakra-ui/accordion";
 import { AccordionPanel } from "@chakra-ui/accordion";
 import { AccordionButton } from "@chakra-ui/accordion";
 import { AccordionIcon } from "@chakra-ui/accordion";
-import { Badge, Box } from "@chakra-ui/layout";
+import { Badge, Box, Stack, StackDivider } from "@chakra-ui/layout";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import * as States from "../states";
 import { translateColorNumber } from "../utils";
+import TaskCard from "./TaskCard";
+
+const ProjectTaskPane: React.FC<{ name: string }> = ({ name }) => {
+  const tasks = useRecoilValue(States.taskFamilyByProject(name));
+  const taskIds = tasks.map((task) => task.id);
+  if (taskIds.length === 0) {
+    return null;
+  }
+  return (
+    <Stack divider={<StackDivider borderColor="gray.200" />}>
+      {taskIds.map((t) => (
+        <TaskCard taskId={t} key={t} />
+      ))}
+    </Stack>
+  );
+};
 
 const ProjectList: React.FC = () => {
   const projectList = useRecoilValue(States.projects);
@@ -29,7 +45,9 @@ const ProjectList: React.FC = () => {
               </Box>
               <AccordionIcon />
             </AccordionButton>
-            <AccordionPanel>Todo...</AccordionPanel>
+            <AccordionPanel>
+              <ProjectTaskPane name={project.name} />
+            </AccordionPanel>
           </AccordionItem>
         ))}
     </Accordion>
